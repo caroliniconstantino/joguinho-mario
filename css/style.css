@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-bord {
+    width: 100%;
+    height: 45rem;
+    border-bottom: 16px solid rgb(0, 226, 0);
+    margin: 0 auto; /*centraliza horizontalmente */
+    position: relative;
+    overflow: hidden; /* define que quando sair do container game-bord, ela desaparecerá */
+    background: linear-gradient(#87CEEB, rgb(255, 255, 255));
+}
+
+.pipe{
+    position: absolute; /* para que nenhuma imagem interfira na outra */
+    bottom: 0;
+    width: 8%;
+    right: 0; /* ponto da partida à direita */
+    animation: pipe-animation 1.5s infinite linear; /* animação que leva 1.5s pra ocorrer sendo de forma linear 
+(mantendo a mesma velocidade) e de forma infinita */
+}
+
+.mario {
+    width: 10%;
+    position: absolute;
+    bottom: 0;
+}
+/* classe jump é criada separadamente do mario pois quando houver um click, 
+ao invés de ser executada a classe do mario, é executada a jump. Esse método é criado no js */
+.jump {
+    animation: jump 500ms ease-out; /*ease-out que pula e vai caindo suavemente */
+}
+/* abaixo é criada a aniimação que começa no right -10 e termina no right 100%. Ela é passada dentro do css do pipe */
+.clouds {
+    position: absolute;
+    margin-top: 8%;
+    width: 30%;
+    animation: clouds-animation 20s infinite linear;
+}
+@keyframes pipe-animation{
+    from{
+        right: -10%;
+    }
+    to{
+        right: 100%;
+    }
+}
+/* abaixo a animação do mario sendo que o caminho é representado por %, e ela define que quando a animação iniciar ela 
+vai ter bottom 0 (no chão) e aos poucos sobe, se mantém em 180px e volta a diminuir o bottom */
+@keyframes jump {
+    0%{
+        bottom: 0;
+    }
+    40%{
+        bottom: 180px;
+    }
+    50%{
+        bottom: 180px;
+    }
+    60%{
+        bottom: 180px;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+
+@keyframes clouds-animation {
+    from{
+        right: -30%;
+    }
+    to{
+        right: 100%;
+    }
+}
